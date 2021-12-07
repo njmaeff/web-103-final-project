@@ -1,0 +1,22 @@
+@use "variables" as *;
+@use "~@njmaeff/webpack-static-site/scss/mq" as * with (
+    $breakpoints: (
+        tablet: $tablet_size,
+        desktop: $desktop_size
+    ),
+    $media-type: screen
+);
+
+@forward "~@njmaeff/webpack-static-site/scss/mq";
+
+@mixin using_tablet {
+    @include mq($from: tablet) {
+        @content
+    }
+}
+
+@mixin using_desktop {
+    @include mq($from: desktop) {
+        @content
+    }
+}

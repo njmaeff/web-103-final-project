@@ -1,0 +1,55 @@
+@use "variables";
+@use "~@njmaeff/webpack-static-site/scss/reset";
+@use "~@njmaeff/webpack-static-site/scss/print";
+@use "mobile";
+@use "mq" as *;
+
+$block_size_md: 3vmin;
+
+@include using_tablet {
+    :root {
+        font-size: 0.875rem;
+    }
+    .tetris-main-container {
+        grid-template-columns: repeat(12, $block_size_md);
+        grid-template-rows: repeat(22, $block_size_md);
+
+        div {
+            height: $block_size_md;
+            width: $block_size_md;
+        }
+    }
+
+    .tetris-next-piece-container {
+        grid-template-columns: repeat(4, $block_size_md);
+        grid-template-rows: repeat(4, $block_size_md);
+
+        div {
+            height: $block_size_md;
+            width: $block_size_md;
+        }
+    }
+
+    .tetris-controls-keys {
+        display: grid;
+        grid-template-columns: repeat(3, 3.5rem);
+        grid-template-rows: repeat(3, 3.5rem);
+        grid-gap: 0.7rem;
+        margin-top: 1.5rem;
+
+        button {
+            font-size: 1.5rem;
+        }
+
+    }
+        .tetris-controls-menu {
+        grid-gap: 0.5rem;
+    }
+
+}
+
+@include using_desktop {
+    :root {
+        font-size: 1rem;
+    }
+}

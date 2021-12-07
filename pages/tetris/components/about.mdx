@@ -1,0 +1,36 @@
+import {Keys} from "./keys";
+
+# Selkirk Web 103 Final Project
+For the Selkirk College Web 103 Project, I built Tetris.
+
+<Keys/>
+
+## Logic
+I borrowed some logic from the main game, such as the speeds, and implemented my scoring and tetromino spawning style.
+
+### Scoring
+Tetris scoring is a combination of the number of lines you clear and the level. Since these things increase linearly throughout the game, I am keeping it simple and basing the scoring on the number of lines cleared only. The speed of the game increases by a level every ten lines.
+
+### Spawning
+Pieces will spawn at the top of the grid, and the grid's bottom-left is the origin at coordinates (0, 0). The Tetromino will spawn with a random rotation and horizontal position within the left and right center of the grid. When a tetromino cannot fall into a single square, the game is over.
+
+### Line Clear Method
+This app uses the naive line-clear method, where we shift down squares above the line by the number of lines removed. I do this by removing the lines and then padding the top of the grid with squares with the background color unset. The next challenge could be implementing the gravity method, where floating squares will fall to the bottom.
+
+### Rotation
+I hard-coded all the positions of the Tetromino to avoid computing it all during runtime. I'm not sure I have the rotation logic quite right. For example, you cannot rotate the straight piece when it is very close to the right side.
+
+## Design
+I hold most of the app state in a single object variable, called `gameState`. All of my functions operate on the variable in some way. I implemented several keybindings for controlling the game and also interacting with the modals. Every modal should have an `enter` and `escape` keybinding so you can quickly select a button.
+
+I ran into an issue with the music. If I try to play it immediately, the browser will complain because autoplay is not supported. I created a `Welcome to Tetris` modal, so we can safely start the music when the user hits play.
+
+## Sources
+- I used a lot of information from the [Tetris Fandom](https://tetris.fandom.com/wiki/Tetris_Guideline) page.
+- I am borrowing the main Tetris theme song, [Korobiniki](https://en.wikipedia.org/wiki/Korobeiniki).
+- I borrowed the speed curve from [this stack exchange post](https://gamedev.stackexchange.com/questions/159835/understanding-tetris-speed-curve).
+- I used the Tetris grid layout idea from this [codepen](https://codepen.io/Jemimaabu/pen/ExaKLYa).
+
+
+## Take-aways
+I enjoyed figuring out all the math behind this project (linear algebra) and writing the app procedurally. I also liked using the HTML template elements to create modals, and they worked pretty well.
